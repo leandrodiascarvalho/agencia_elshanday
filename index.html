@@ -4,15 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elshanday Digital Agency</title>
+  <title>Elshanday Digital Agency | Web Design & Retro-Cyberpunk Engineering</title>
   <meta name="description" content="Agência digital com engenharia de ponta e estética retro-gaming. HTML5, SCSS, JavaScript ES6 nativo, Node + Express.">
   <link rel="canonical" href="https://elshanday.dev/">
 
+  <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:title" content="Elshanday Digital Agency">
   <meta property="og:description" content="Agência digital com engenharia de ponta e estética retro-gaming. HTML5, SCSS, JavaScript ES6 nativo, Node + Express.">
   <meta property="og:url" content="https://elshanday.dev/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://elshanday.dev/og-cover.png" />
+  <meta property="og:image" content="https://elshanday.dev/og-cover.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -20,10 +21,46 @@
   <meta name="twitter:description" content="Agência digital com engenharia de ponta e estética retro-gaming. HTML5, SCSS, JavaScript ES6 nativo, Node + Express.">
   <meta name="twitter:image" content="https://elshanday.dev/og-cover.png">
 
+  <!-- Theme & Mobile Icons -->
+  <meta name="theme-color" content="#050805">
+  <meta name="msapplication-TileColor" content="#050805">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@400;600;800;900&family=Press+Start+2P&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-[#050805] text-[#00ff66] font-mono selection:bg-[#00ff66] selection:text-[#050805] min-h-screen antialiased overflow-x-hidden flex flex-col relative">
 
-</body>
+  <!-- 3D Global Cyberspace Canvas Layer -->
+  <canvas id="cyberspace-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-30"></canvas>
 
-</html>
+  <!-- TOP STATUS TICKER -->
+  <div id="status-ticker" class="relative z-50 w-full bg-black border-b-2 border-[#00ff66]/60 px-4 py-1.5 flex items-center justify-between text-[11px] font-['Share_Tech_Mono'] text-[#00ff66] overflow-hidden select-none">
+    <div class="flex items-center gap-3 sm:gap-4">
+      <span class="text-[#ffee00] flex items-center gap-1.5 font-bold">
+        <span class="inline-block w-2 h-2 rounded-full bg-[#00ff66] animate-ping"></span>
+        SYS.NODE: ONLINE
+      </span>
+      <span class="hidden md:inline text-[#00f0ff] text-xs">STACK: HTML5 + SCSS + ES6 + NODE + EXPRESS</span>
+    </div>
+
+    <div class="flex items-center gap-3 sm:gap-4 text-xs">
+      <button id="crt-toggle-btn" class="hover:text-[#ffee00] cursor-pointer transition-colors" title="Alternar scanlines CRT">[CRT: ON]</button>
+      <button id="btn-audio-toggle" class="hover:text-[#ffee00] cursor-pointer transition-colors" title="Alternar som">
+        <span>🔊</span> AUDIO: [OFF]
+      </button>
+      <button id="theme-cycle-btn" class="text-[#ffee00] hover:underline cursor-pointer" title="Alternar paleta">
+        THEME: <span id="current-theme-label">Pixel Art Retro</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header id="main-header" class="sticky top-0 z-40 bg-[#050805]/90 backdrop-blur-md border-b-2 border-[#00ff66]/40 px-4 sm:px-8 py-3 shadow-[0_4px_15px_rgba(0,0,0,0.8)] transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
