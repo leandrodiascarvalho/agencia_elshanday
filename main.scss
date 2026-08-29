@@ -1,0 +1,73 @@
+// ==========================================
+// EL SHANDAY CYBERPUNK THEME - SASS MODULE
+// ==========================================
+
+$neon-cyan: #00f3ff;
+$neon-magenta: #ff007f;
+$neon-yellow: #fefe00;
+$neon-green: #00ff66;
+$dark-bg: #050811;
+$panel-bg: rgba(10, 16, 32, 0.85);
+$glass-border: rgba(0, 243, 255, 0.25);
+
+@mixin cyber-box-glow($color: $neon-cyan) {
+  box-shadow: 0 0 15px rgba($color, 0.35), inset 0 0 10px rgba($color, 0.15);
+  border: 1px solid rgba($color, 0.4);
+}
+
+@mixin scanline-effect {
+  position: relative;
+  &::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+    z-index: 10;
+    pointer-events: none;
+  }
+}
+
+.cyber-panel {
+  background: $panel-bg;
+  backdrop-filter: blur(12px);
+  @include cyber-box-glow($neon-cyan);
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    @include cyber-box-glow($neon-magenta);
+  }
+}
+
+.glitch-text {
+  position: relative;
+  text-shadow: 0 0 8px $neon-cyan, 0 0 20px rgba(0, 243, 255, 0.5);
+}
+
+.hud-corner {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 10px $neon-cyan);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 25px $neon-magenta);
+  }
+}
+
+.pulse-cyber {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
