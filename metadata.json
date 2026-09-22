@@ -1,6 +1,6 @@
 {
-  "name": "elshanday-cyberpunk-agency",
+  "name": "elshanday-retro-gaming-agency",
   "version": "1.0.0",
-  "theme": "cyberpunk",
-  "description": "Plataforma interativa estilo Cyberpunk para a Agência El Shanday"
+  "theme": "retro-gaming-pixel-art",
+  "description": "Agência digital com engenharia de ponta e estética retro-gaming 8-bit & 16-bit arcade. HTML5, CSS + SCSS, JavaScript, Node + Express, React."
 }

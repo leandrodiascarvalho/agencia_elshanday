@@ -10,7 +10,7 @@ export async function setupVite(app) {
     const vite = await createServer({
       server: { middlewareMode: true },
       appType: 'spa',
-      root
+      root,
     });
 
     app.use(vite.middlewares);

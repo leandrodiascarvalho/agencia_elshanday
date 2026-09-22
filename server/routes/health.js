@@ -7,7 +7,7 @@ router.get('/health', (req, res) => {
     status: 'online',
     system: 'El Shanday Core Engine',
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
   });
 });
 
@@ -16,7 +16,7 @@ router.get('/stats', (req, res) => {
     activeConnections: 1,
     latencyMs: Math.floor(Math.random() * 15) + 5,
     memoryUsageMb: Math.round(process.memoryUsage().heapUsed / 1024 / 1024),
-    securityStatus: 'CYBER_SHIELD_ACTIVE'
+    securityStatus: 'CYBER_SHIELD_ACTIVE',
   });
 });
 

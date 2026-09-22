@@ -1,66 +1,820 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ELSHANDAY // STUDIO OBSCURA - Digital Cyberpunk Agency</title>
+    <meta
+      name="description"
+      content="Agência digital com engenharia de ponta e estética retro-gaming. HTML5, SCSS, Vanilla JS ES6+, Node + Express."
+    />
+    <meta name="theme-color" content="#050805" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;rect width='100' height='100' fill='%23050805'/&gt;&lt;text y='70' x='20' font-size='70' fill='%2300ff66' font-family='monospace' font-weight='bold'&gt;E&lt;/text&gt;&lt;/svg&gt;"
+    />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta property="og:title" content="ELSHANDAY // STUDIO OBSCURA - Digital Cyberpunk Agency" />
+    <meta
+      property="og:description"
+      content="Agência digital brutalista com engenharia de ponta e estética retro-gaming."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Press+Start+2P&family=Share+Tech+Mono&family=Silkscreen:wght@400;700&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Agência El Shanday",
+        "description": "Desenvolvimento web futurista, retro-gaming, 3D WebGL e sistemas full-stack de alta performance.",
+        "url": "https://elshanday.dev/",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "BR"
+        }
+      }
+    </script>
+    <script>
+      // Gracefully suppress iframe dev WebSocket closed rejections
+      window.addEventListener('unhandledrejection', function (event) {
+        if (
+          event &&
+          event.reason &&
+          (String(event.reason).includes('WebSocket') ||
+            String(event.reason.message).includes('WebSocket'))
+        ) {
+          event.preventDefault();
+        }
+      });
+    </script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elshanday Digital Agency | Web Design & Retro-Cyberpunk Engineering</title>
-  <meta name="description" content="Agência digital com engenharia de ponta e estética retro-gaming. HTML5, SCSS, JavaScript ES6 nativo, Node + Express.">
-  <link rel="canonical" href="https://elshanday.dev/">
+  <body
+    class="bg-[#050805] text-[#00ff66] font-mono selection:bg-[#00ff66] selection:text-[#050805] min-h-screen antialiased overflow-x-hidden scanlines crt-overlay bg-retro-grid"
+  >
+    <!-- TOP STATUS TICKER -->
+    <div
+      id="status-ticker"
+      class="w-full bg-black border-b-2 border-[#00ff66] px-4 py-1.5 flex items-center justify-between text-[10px] font-pixel text-[#00ff66] overflow-visible relative z-40 select-none"
+    >
+      <div class="flex items-center gap-3 sm:gap-4">
+        <span class="text-[#ffee00] flex items-center gap-1.5 font-bold">
+          <span class="inline-block w-2 h-2 rounded-full bg-[#00ff66] animate-ping"></span>
+          SYS.NODE: ONLINE
+        </span>
+        <div
+          id="ticker-live-sync"
+          class="flex items-center gap-1.5 px-2 py-0.5 bg-[#00ff66]/10 border border-[#00ff66] text-[#00ff66] font-pixel text-[9px] select-none"
+          title="Conexão WebSocket ativa em tempo real"
+        >
+          <span
+            class="ws-status-indicator inline-block w-1.5 h-1.5 rounded-full bg-[#00ff66] animate-pulse"
+          ></span>
+          <span class="ws-status-label font-bold tracking-wider">LIVE_SYNC:</span>
+          <span id="ticker-active-users-count" class="text-[#ffee00] font-bold">1</span>
+          <span class="hidden sm:inline text-[#00ff66]/70 text-[8px]">ONLINE</span>
+          <span class="text-[#00ff66]/40 hidden md:inline">|</span>
+          <span
+            id="live-sync-latency"
+            class="text-[#00f0ff] font-mono text-[9px] hidden md:inline"
+            title="Latência WebSocket"
+            >--ms</span
+          >
+        </div>
+        <span class="hidden xl:inline text-[#00f0ff] font-code text-xs"
+          >STACK: HTML5 + SCSS + VANILLA JS ES6+ + EXPRESS + WS</span
+        >
+      </div>
 
-  <!-- Open Graph / Facebook / WhatsApp -->
-  <meta property="og:title" content="Elshanday Digital Agency">
-  <meta property="og:description" content="Agência digital com engenharia de ponta e estética retro-gaming. HTML5, SCSS, JavaScript ES6 nativo, Node + Express.">
-  <meta property="og:url" content="https://elshanday.dev/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://elshanday.dev/og-cover.png">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Elshanday Digital Agency">
-  <meta name="twitter:description" content="Agência digital com engenharia de ponta e estética retro-gaming. HTML5, SCSS, JavaScript ES6 nativo, Node + Express.">
-  <meta name="twitter:image" content="https://elshanday.dev/og-cover.png">
-
-  <!-- Theme & Mobile Icons -->
-  <meta name="theme-color" content="#050805">
-  <meta name="msapplication-TileColor" content="#050805">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@400;600;800;900&family=Press+Start+2P&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
-</head>
-
-<body class="bg-[#050805] text-[#00ff66] font-mono selection:bg-[#00ff66] selection:text-[#050805] min-h-screen antialiased overflow-x-hidden flex flex-col relative">
-
-  <!-- 3D Global Cyberspace Canvas Layer -->
-  <canvas id="cyberspace-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-30"></canvas>
-
-  <!-- TOP STATUS TICKER -->
-  <div id="status-ticker" class="relative z-50 w-full bg-black border-b-2 border-[#00ff66]/60 px-4 py-1.5 flex items-center justify-between text-[11px] font-['Share_Tech_Mono'] text-[#00ff66] overflow-hidden select-none">
-    <div class="flex items-center gap-3 sm:gap-4">
-      <span class="text-[#ffee00] flex items-center gap-1.5 font-bold">
-        <span class="inline-block w-2 h-2 rounded-full bg-[#00ff66] animate-ping"></span>
-        SYS.NODE: ONLINE
-      </span>
-      <span class="hidden md:inline text-[#00f0ff] text-xs">STACK: HTML5 + SCSS + ES6 + NODE + EXPRESS</span>
+      <div class="flex items-center gap-3 sm:gap-4">
+        <button
+          id="crt-toggle-btn"
+          class="header-interactive-btn hover:text-[#ffee00] cursor-pointer transition-colors"
+          title="Alternar scanlines CRT"
+        >
+          [CRT: ON]
+        </button>
+        <div id="sound-toggle-container" class="relative inline-flex items-center">
+          <button
+            id="sound-toggle-btn"
+            class="header-interactive-btn hover:text-[#ffee00] cursor-pointer transition-colors"
+            aria-describedby="sound-tooltip"
+            data-sound="none"
+          >
+            <span>🔊</span> AUDIO_ON
+          </button>
+          <!-- Custom Cyberpunk Tooltip -->
+          <div
+            id="sound-tooltip"
+            class="cyber-tooltip cyber-tooltip-on"
+            role="tooltip"
+            aria-hidden="true"
+          >
+            <div class="cyber-tooltip-notch"></div>
+            <div class="cyber-tooltip-header">
+              <span class="cyber-tooltip-tag">[AUDIO_DSP // TELEMETRIA]</span>
+              <span class="cyber-tooltip-chip">8-BIT DSP</span>
+            </div>
+            <div class="cyber-tooltip-body">
+              <div class="flex items-center gap-1.5">
+                <span id="sound-tooltip-indicator" class="cyber-pixel-dot bg-[#00ff66]"></span>
+                <span id="sound-tooltip-status-text"
+                  >STATUS:
+                  <span class="text-[#00ff66] font-bold tracking-wider">ATIVADO [ON]</span></span
+                >
+              </div>
+              <span id="sound-tooltip-action" class="cyber-tooltip-action-badge text-[#ffee00]"
+                >[CLIQUE P/ MUTAR]</span
+              >
+            </div>
+            <div class="cyber-tooltip-footer">
+              <span id="sound-tooltip-sub">DISPOSITIVO: ALTO-FALANTES</span>
+              <span class="text-[#00f0ff]">44.1kHz</span>
+            </div>
+          </div>
+        </div>
+        <button
+          id="theme-cycle-btn"
+          class="header-interactive-btn text-[#ffee00] hover:underline cursor-pointer"
+          title="Alternar paleta de cores"
+        >
+          THEME: <span id="current-theme-label">DARK</span>
+        </button>
+      </div>
     </div>
 
-    <div class="flex items-center gap-3 sm:gap-4 text-xs">
-      <button id="crt-toggle-btn" class="hover:text-[#ffee00] cursor-pointer transition-colors" title="Alternar scanlines CRT">[CRT: ON]</button>
-      <button id="btn-audio-toggle" class="hover:text-[#ffee00] cursor-pointer transition-colors" title="Alternar som">
-        <span>🔊</span> AUDIO: [OFF]
+    <!-- MAIN HEADER -->
+    <header
+      id="main-header"
+      class="sticky top-0 z-40 bg-[#050805]/95 backdrop-blur border-b-4 border-[#00ff66] px-4 sm:px-8 py-3 shadow-[0_4px_0_0_#000] transition-opacity duration-300"
+    >
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-3">
+        <!-- Brand / Logo -->
+        <div class="flex items-center justify-between w-full lg:w-auto gap-4">
+          <div
+            id="header-logo-btn"
+            class="flex items-center gap-3 cursor-pointer select-none group"
+            data-tab="home"
+            title="Ir para Home"
+          >
+            <div
+              class="w-9 h-9 bg-[#00ff66] text-[#050805] font-pixel font-bold flex items-center justify-center text-base shadow-[2px_2px_0px_#ffee00] group-hover:bg-[#ffee00] transition-colors shrink-0"
+            >
+              E
+            </div>
+            <div>
+              <div
+                class="font-pixel text-base sm:text-lg font-bold tracking-wider text-[#00ff66] glitch-text"
+              >
+                ELSHANDAY
+              </div>
+              <div
+                class="text-[9px] font-mono tracking-widest text-[#00ff66]/70 group-hover:text-[#ffee00] transition-colors"
+              >
+                STUDIO OBSCURA // DEV_AGENCY
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions Mobile Icons & Live Sync -->
+          <div class="flex items-center gap-2 lg:hidden">
+            <div
+              id="mobile-live-sync"
+              class="flex items-center gap-1.5 px-2 py-1 bg-black border border-[#00ff66] text-[9px] font-pixel select-none shadow-[1px_1px_0px_#00ff66]"
+              title="Usuários Ativos Online via WebSocket"
+            >
+              <span
+                class="ws-status-indicator inline-block w-1.5 h-1.5 rounded-full bg-[#00ff66] animate-pulse"
+              ></span>
+              <span class="text-[#00ff66] text-[8px] font-bold">SYNC:</span>
+              <span id="mobile-active-users-count" class="text-[#ffee00] font-bold">1</span>
+            </div>
+            <button
+              id="open-search-btn-mobile"
+              class="header-interactive-btn p-2 bg-black border-2 border-[#00ff66] text-[#ffee00] text-xs font-pixel active:translate-y-0.5 cursor-pointer"
+              title="Buscar"
+            >
+              🔍
+            </button>
+            <button
+              id="header-cta-btn-mobile"
+              class="header-interactive-btn px-3 py-2 bg-[#ffee00] text-black font-pixel text-[10px] font-bold border-2 border-black shadow-[2px_2px_0px_#00ff66] active:translate-y-0.5 cursor-pointer"
+            >
+              START
+            </button>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav
+          class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto max-w-full py-1 justify-start md:justify-center"
+        >
+          <button
+            class="header-nav-btn whitespace-nowrap px-3 py-1.5 font-pixel text-[10px] sm:text-xs transition-all border cursor-pointer"
+            data-tab="home"
+          >
+            HOME
+          </button>
+          <button
+            class="header-nav-btn whitespace-nowrap px-3 py-1.5 font-pixel text-[10px] sm:text-xs transition-all border cursor-pointer"
+            data-tab="services"
+          >
+            SERVIÇOS
+          </button>
+          <button
+            class="header-nav-btn whitespace-nowrap px-3 py-1.5 font-pixel text-[10px] sm:text-xs transition-all border cursor-pointer"
+            data-tab="portfolio"
+          >
+            REPOSITÓRIO
+          </button>
+          <button
+            class="header-nav-btn whitespace-nowrap px-3 py-1.5 font-pixel text-[10px] sm:text-xs transition-all border cursor-pointer"
+            data-tab="briefing"
+          >
+            BRIEFING
+          </button>
+          <button
+            class="header-nav-btn whitespace-nowrap px-3 py-1.5 font-pixel text-[10px] sm:text-xs transition-all border cursor-pointer"
+            data-tab="faq"
+          >
+            FAQ
+          </button>
+          <button
+            class="header-nav-btn whitespace-nowrap px-3 py-1.5 font-pixel text-[10px] sm:text-xs transition-all border cursor-pointer"
+            data-tab="console"
+          >
+            CONSOLE
+          </button>
+        </nav>
+
+        <!-- Header CTA Desktop & LIVE_SYNC -->
+        <div class="hidden lg:flex items-center gap-3">
+          <!-- LIVE_SYNC Real-Time Status Badge -->
+          <div
+            id="header-live-sync"
+            class="header-interactive-btn flex items-center gap-2 px-3 py-1.5 bg-black border-2 border-[#00ff66] text-[10px] font-pixel shadow-[2px_2px_0px_#00ff66] select-none cursor-default transition-all"
+            title="WebSocket Status: Usuários Ativos Conectados em Tempo Real"
+          >
+            <span
+              class="ws-status-indicator inline-block w-2 h-2 rounded-full bg-[#00ff66] animate-pulse"
+            ></span>
+            <span class="ws-status-label text-[#00ff66] tracking-wider font-bold">LIVE_SYNC</span>
+            <span class="text-[#00ff66]/40 font-mono">::</span>
+            <span
+              id="header-active-users-count"
+              class="text-[#ffee00] font-bold text-xs tracking-wider min-w-[1.2rem] text-center"
+              >1</span
+            >
+            <span class="text-[#00ff66]/70 text-[8px] tracking-widest uppercase">NODES</span>
+          </div>
+
+          <button
+            id="open-search-btn"
+            class="header-interactive-btn px-3 py-2 bg-black border-2 border-[#00ff66] text-[#ffee00] font-pixel text-[10px] hover:border-[#ffee00] hover:text-[#ffee00] active:translate-y-0.5 cursor-pointer"
+            title="Busca Rápida"
+          >
+            CTRL+K 🔍
+          </button>
+          <button
+            id="header-cta-btn"
+            class="header-interactive-btn px-4 py-2 bg-[#ffee00] text-[#050805] font-pixel text-xs font-bold border-2 border-black shadow-[3px_3px_0px_#00ff66] hover:bg-[#00ff66] hover:shadow-[3px_3px_0px_#ffee00] transition-all active:translate-x-0.5 active:translate-y-0.5 active:shadow-none cursor-pointer glitch-btn-yellow glitch-hover"
+          >
+            START_PROJECT &gt;
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN DYNAMIC CONTENT CONTAINER -->
+    <main
+      id="app-main-content"
+      class="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 min-h-[calc(100vh-280px)]"
+    >
+      <!-- Views injected here by jQuery modules -->
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+      id="main-footer"
+      class="border-t-4 border-[#00ff66] bg-black text-[#00ff66] px-4 sm:px-8 py-10 mt-16 shadow-[0_-4px_0_0_#050805] transition-opacity duration-300"
+    >
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Col 1: Brand Info -->
+        <div class="space-y-3">
+          <div class="font-pixel text-sm text-[#ffee00]">ELSHANDAY // OBSCURA</div>
+          <p class="font-code text-xs text-[#00ff66]/70 leading-relaxed">
+            Agência digital especializada em brutalismo, alta performance, stack limpa e aplicações
+            web com alma retro-futurista.
+          </p>
+          <div class="font-pixel text-[9px] text-[#00f0ff]">
+            POWERED BY NODE + EXPRESS &amp; JQUERY
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div class="space-y-2">
+          <div class="font-pixel text-xs text-[#ffee00] border-b border-[#00ff66]/40 pb-1">
+            MÓDULOS
+          </div>
+          <ul class="font-code text-xs space-y-1 text-[#00ff66]/80">
+            <li>
+              <button class="footer-tab-link hover:text-[#ffee00]" data-tab="home">
+                &gt; Central Operacional
+              </button>
+            </li>
+            <li>
+              <button class="footer-tab-link hover:text-[#ffee00]" data-tab="services">
+                &gt; Módulos de Engenharia
+              </button>
+            </li>
+            <li>
+              <button class="footer-tab-link hover:text-[#ffee00]" data-tab="portfolio">
+                &gt; Repositórios GitHub
+              </button>
+            </li>
+            <li>
+              <button class="footer-tab-link hover:text-[#ffee00]" data-tab="briefing">
+                &gt; Calculadora &amp; Briefing
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Support & System -->
+        <div class="space-y-2">
+          <div class="font-pixel text-xs text-[#ffee00] border-b border-[#00ff66]/40 pb-1">
+            SISTEMA &amp; DOCS
+          </div>
+          <ul class="font-code text-xs space-y-1 text-[#00ff66]/80">
+            <li>
+              <button class="footer-tab-link hover:text-[#ffee00]" data-tab="faq">
+                &gt; FAQ &amp; Contratos
+              </button>
+            </li>
+            <li>
+              <button class="footer-tab-link hover:text-[#ffee00]" data-tab="console">
+                &gt; Telemetria do Servidor
+              </button>
+            </li>
+            <li>
+              <a
+                href="https://github.com/elshanday"
+                target="_blank"
+                rel="noreferrer"
+                class="hover:text-[#ffee00]"
+                >&gt; GitHub Oficial ↗</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Terminal Dispatch -->
+        <div class="space-y-3">
+          <div class="font-pixel text-xs text-[#ffee00] border-b border-[#00ff66]/40 pb-1">
+            COMM_CHANNEL
+          </div>
+          <p class="font-code text-xs text-[#00ff66]/70">
+            Transmitindo via satélite encriptado AES-256. Resposta garantida &lt; 24h.
+          </p>
+          <div
+            class="p-2.5 bg-[#080d08] border border-[#00ff66] font-code text-xs text-[#ffee00] space-y-1"
+          >
+            <div>EMAIL: ops@elshanday.dev</div>
+            <div class="text-[#00ff66]">WHATSAPP: +55 (11) 99999-9999</div>
+          </div>
+          <button
+            id="footer-whatsapp-btn"
+            class="w-full py-2 px-3 bg-[#00ff66] text-[#050805] font-pixel text-[10px] font-bold border-2 border-black hover:bg-[#ffee00] transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-[2px_2px_0px_#ffee00]"
+          >
+            <span>💬</span> AGENDAR REUNIÃO (WHATSAPP) ↗
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="max-w-7xl mx-auto border-t border-[#00ff66]/30 mt-8 pt-4 flex flex-col sm:flex-row items-center justify-between text-[10px] font-pixel text-[#00ff66]/60"
+      >
+        <div>© 2026 ELSHANDAY. ALL RIGHTS RESERVED.</div>
+        <div class="text-[#ffee00]">NO FRAMEWORK BLOAT // 100% PURE WEB CRAFT</div>
+      </div>
+    </footer>
+
+    <!-- FLOATING ACTION BUTTONS (FABs) -->
+    <div
+      id="floating-fabs-container"
+      class="fixed bottom-6 right-6 z-40 flex flex-col gap-3 transition-opacity duration-300"
+    >
+      <!-- WhatsApp Meeting FAB -->
+      <button
+        id="fab-whatsapp-btn"
+        title="Agendar Reunião via WhatsApp com a Equipe Técnica"
+        class="px-3 py-2 bg-[#00ff66] text-[#050805] font-pixel text-xs font-bold border-2 border-black shadow-[4px_4px_0px_#ffee00] hover:bg-[#ffee00] transition-all active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center gap-2 glitch-btn-green glitch-hover cursor-pointer"
+      >
+        <span class="text-sm">💬</span>
+        <span>WHATSAPP // AGENDAR REUNIÃO</span>
+        <span class="w-2 h-2 rounded-full bg-black animate-ping"></span>
       </button>
-      <button id="theme-cycle-btn" class="text-[#ffee00] hover:underline cursor-pointer" title="Alternar paleta">
-        THEME: <span id="current-theme-label">Pixel Art Retro</span>
+
+      <!-- AI Assistant FAB -->
+      <button
+        id="fab-ai-assistant-btn"
+        title="Abrir Assistente Inteligente Cyber AI"
+        class="px-3 py-2 bg-[#ffee00] text-[#050805] font-pixel text-xs font-bold border-2 border-black shadow-[4px_4px_0px_#00ff66] hover:bg-[#00ff66] transition-all active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center gap-2 glitch-btn-yellow glitch-hover cursor-pointer"
+      >
+        <span class="w-2 h-2 rounded-full bg-black animate-ping"></span>
+        <span>&gt; AI_ASSISTANT.EXE</span>
+      </button>
+
+      <!-- Terminal FAB -->
+      <button
+        id="fab-terminal-btn"
+        title="Abrir Terminal CLI do Sistema"
+        class="px-3 py-2 bg-[#050805] text-[#00ff66] font-pixel text-xs font-bold border-2 border-[#00ff66] shadow-[4px_4px_0px_#ffee00] hover:bg-[#00ff66] hover:text-[#050805] transition-all active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center gap-2 glitch-btn-green cursor-pointer"
+      >
+        <span>&gt;_</span>
+        <span>TERMINAL_CLI</span>
       </button>
     </div>
-  </div>
 
-  <!-- MAIN HEADER -->
-  <header id="main-header" class="sticky top-0 z-40 bg-[#050805]/90 backdrop-blur-md border-b-2 border-[#00ff66]/40 px-4 sm:px-8 py-3 shadow-[0_4px_15px_rgba(0,0,0,0.8)] transition-all duration-300">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <!-- ================= MODALS ================= -->
+
+    <!-- 1. RETRO GAME MODAL (Cyber Dodger) -->
+    <div
+      id="retro-game-modal"
+      class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4"
+    >
+      <div
+        class="bg-[#050805] border-4 border-[#00ff66] shadow-[8px_8px_0px_#ffee00] max-w-lg w-full p-6 space-y-4"
+      >
+        <div class="flex items-center justify-between border-b-2 border-[#00ff66] pb-2">
+          <div class="flex items-center gap-2">
+            <span class="font-pixel text-sm text-[#ffee00]">CYBER_DODGER.EXE</span>
+            <span class="font-pixel text-[10px] text-[#00f0ff]">[ARCADE 80s]</span>
+          </div>
+          <button
+            id="game-modal-close-btn"
+            class="font-pixel text-xs text-[#ff007f] hover:text-white px-2 py-1 bg-black border border-current cursor-pointer"
+          >
+            [FECHAR/ESC]
+          </button>
+        </div>
+
+        <div
+          class="flex items-center justify-between font-pixel text-xs text-[#00ff66] bg-black p-2 border border-[#00ff66]/40"
+        >
+          <div>SCORE: <span id="game-score-val" class="text-[#ffee00]">00000</span></div>
+          <div>LIVES: <span id="game-lives-val">❤️❤️❤️</span></div>
+        </div>
+
+        <div class="flex justify-center bg-black border-2 border-[#00ff66]">
+          <canvas id="arcade-canvas" width="360" height="340" class="max-w-full"></canvas>
+        </div>
+
+        <div class="flex items-center justify-between font-code text-[11px] text-[#00ff66]/80">
+          <div>
+            Controles:
+            <kbd class="px-1.5 py-0.5 bg-black border border-[#00ff66]">WASD/Setas</kbd> Mover |
+            <kbd class="px-1.5 py-0.5 bg-black border border-[#00ff66]">Espaço</kbd> Atirar
+          </div>
+          <button
+            id="game-restart-btn"
+            class="px-3 py-1 bg-[#ffee00] text-black font-pixel text-[9px] font-bold hover:bg-[#00ff66] cursor-pointer"
+          >
+            RESTART
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. TERMINAL MODAL -->
+    <div
+      id="terminal-modal"
+      class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 transition-all duration-300"
+    >
+      <div
+        id="terminal-window"
+        class="bg-[#050805] border-4 border-[#00ff66] shadow-[8px_8px_0px_#ffee00] max-w-2xl w-full p-6 space-y-4 flex flex-col h-[520px] transition-all duration-300"
+      >
+        <!-- Terminal Header -->
+        <div class="flex items-center justify-between border-b-2 border-[#00ff66] pb-2">
+          <div class="flex items-center gap-2">
+            <span class="font-pixel text-xs text-[#00ff66]">TERMINAL_CORE // ELSHANDAY_OS</span>
+            <span
+              id="terminal-focus-badge"
+              class="hidden font-pixel text-[9px] text-[#ffee00] bg-[#ffee00]/15 px-2 py-0.5 border border-[#ffee00]/50 animate-pulse"
+            >
+              [FOCUS: ATIVO]
+            </span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button
+              id="terminal-focus-btn"
+              type="button"
+              class="font-pixel text-[10px] text-[#ffee00] hover:text-black hover:bg-[#ffee00] px-2 py-1 bg-black border border-[#ffee00] transition-colors cursor-pointer"
+              title="Alternar Modo Foco Imersivo (Tela Cheia)"
+            >
+              <span id="terminal-focus-btn-label">⛶ FOCUS</span>
+            </button>
+            <button
+              id="terminal-close-btn"
+              type="button"
+              class="font-pixel text-xs text-[#ff007f] hover:text-white px-2 py-1 bg-black border border-current cursor-pointer"
+              title="Fechar Terminal (ESC)"
+            >
+              [ESC/X]
+            </button>
+          </div>
+        </div>
+
+        <!-- Terminal Logs Stream -->
+        <div
+          id="terminal-logs"
+          class="flex-1 overflow-y-auto p-3 bg-black border border-[#00ff66]/40 space-y-2"
+        ></div>
+
+        <!-- Terminal Input Prompt -->
+        <div class="flex items-center gap-2 border-t-2 border-[#00ff66] pt-2">
+          <span class="font-pixel text-xs text-[#ffee00]">&gt;</span>
+          <input
+            id="terminal-input"
+            type="text"
+            placeholder="Comandos (ex: help, history, repos, services, stats) [↑/↓ histórico]..."
+            class="flex-1 bg-transparent font-code text-xs text-[#00ff66] placeholder-[#00ff66]/40 focus:outline-none"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. AI ASSISTANT MODAL -->
+    <div
+      id="ai-assistant-modal"
+      class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4"
+    >
+      <div
+        class="bg-[#050805] border-4 border-[#ffee00] shadow-[8px_8px_0px_#00ff66] max-w-xl w-full p-6 space-y-4 flex flex-col h-[560px]"
+      >
+        <div class="flex items-center justify-between border-b-2 border-[#ffee00] pb-2">
+          <div class="flex items-center gap-2">
+            <span class="font-pixel text-xs text-[#ffee00]"
+              >CYBER_AI // INTELIGÊNCIA ARTIFICIAL</span
+            >
+            <span class="w-2 h-2 bg-[#00ff66] rounded-full animate-ping"></span>
+          </div>
+          <button
+            id="ai-chat-close"
+            class="font-pixel text-xs text-[#ff007f] hover:text-white px-2 py-1 bg-black border border-current"
+          >
+            [ESC/X]
+          </button>
+        </div>
+
+        <!-- Quick prompts -->
+        <div class="flex flex-wrap gap-1.5 pb-1">
+          <button
+            class="ai-quick-chip px-2 py-1 bg-black border border-[#00ff66] font-pixel text-[9px] text-[#00ff66] hover:bg-[#00ff66] hover:text-black cursor-pointer"
+            data-prompt="Quais são os serviços de desenvolvimento web oferecidos?"
+          >
+            SERVIÇOS
+          </button>
+          <button
+            class="ai-quick-chip px-2 py-1 bg-black border border-[#ffee00] font-pixel text-[9px] text-[#ffee00] hover:bg-[#ffee00] hover:text-black cursor-pointer"
+            data-prompt="Como posso calcular o orçamento de uma aplicação web?"
+          >
+            ORÇAMENTO
+          </button>
+          <button
+            class="ai-quick-chip px-2 py-1 bg-black border border-[#00f0ff] font-pixel text-[9px] text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black cursor-pointer"
+            data-prompt="Quais são os prazos médios de entrega de um projeto?"
+          >
+            PRAZOS &amp; SLA
+          </button>
+          <button
+            class="ai-quick-chip px-2 py-1 bg-[#00ff66] text-black border border-black font-pixel text-[9px] font-bold hover:bg-[#ffee00] cursor-pointer"
+            data-prompt="Gostaria de agendar uma reunião via WhatsApp com um engenheiro. Como faço?"
+          >
+            💬 AGENDAR REUNIÃO
+          </button>
+        </div>
+
+        <!-- Chat messages -->
+        <div
+          id="ai-chat-messages"
+          class="flex-1 overflow-y-auto p-3 bg-black border border-[#ffee00]/40 space-y-2"
+        ></div>
+
+        <!-- Chat input -->
+        <div class="flex items-center gap-2 border-t-2 border-[#ffee00] pt-2">
+          <input
+            id="ai-chat-input"
+            type="text"
+            placeholder="Pergunte sobre tecnologias, projetos, orçamentos e prazos..."
+            class="flex-1 p-2 bg-black border border-[#00ff66] font-code text-xs text-[#00ff66] placeholder-[#00ff66]/40 focus:outline-none focus:border-[#ffee00]"
+          />
+          <button
+            id="ai-chat-send"
+            class="px-4 py-2 bg-[#ffee00] text-black font-pixel text-xs font-bold hover:bg-[#00ff66] transition-colors"
+          >
+            <span>&gt;</span> ENVIAR
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. GLOBAL SEARCH MODAL (Ctrl+K) -->
+    <div
+      id="global-search-modal"
+      class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4"
+    >
+      <div
+        class="bg-[#050805] border-4 border-[#00ff66] shadow-[8px_8px_0px_#ffee00] max-w-lg w-full p-6 space-y-4"
+      >
+        <div class="flex items-center justify-between border-b-2 border-[#00ff66] pb-2">
+          <div class="flex items-center gap-2 font-pixel text-xs text-[#ffee00]">
+            <span>SPOTLIGHT_SEARCH [CTRL+K]</span>
+          </div>
+          <button
+            id="search-close"
+            class="font-pixel text-xs text-[#ff007f] hover:text-white px-2 py-1 bg-black border border-current"
+          >
+            [ESC]
+          </button>
+        </div>
+
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Digite para buscar qualquer tela, serviço ou comando..."
+          class="w-full p-3 bg-black border-2 border-[#00ff66] font-code text-xs text-[#00ff66] focus:outline-none focus:border-[#ffee00]"
+          autocomplete="off"
+        />
+
+        <div id="search-results" class="max-h-60 overflow-y-auto space-y-2"></div>
+      </div>
+    </div>
+
+    <!-- 5. WHATSAPP MEETING SCHEDULER MODAL -->
+    <div
+      id="whatsapp-schedule-modal"
+      class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4"
+    >
+      <div
+        class="bg-[#050805] border-4 border-[#00ff66] shadow-[8px_8px_0px_#ffee00] max-w-lg w-full p-6 space-y-5 flex flex-col max-h-[90vh] overflow-y-auto"
+      >
+        <!-- Header -->
+        <div class="flex items-center justify-between border-b-2 border-[#00ff66] pb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">💬</span>
+            <div>
+              <div class="font-pixel text-xs sm:text-sm text-[#00ff66]">
+                AGENDAR REUNIÃO // WHATSAPP
+              </div>
+              <div class="text-[9px] font-mono text-[#ffee00]">
+                ATENDIMENTO DIRETO COM ARQUITETOS
+              </div>
+            </div>
+          </div>
+          <button
+            id="whatsapp-modal-close-btn"
+            class="font-pixel text-xs text-[#ff007f] hover:text-white px-2 py-1 bg-black border border-current cursor-pointer"
+          >
+            [ESC/X]
+          </button>
+        </div>
+
+        <p class="font-code text-xs text-[#00ff66]/80 leading-relaxed">
+          Conecte-se instantaneamente com nossa equipe de engenharia para alinhar escopo, prazos,
+          arquitetura técnica e estimativa de investimento.
+        </p>
+
+        <!-- Quick 1-Click Fast Action -->
+        <div
+          class="p-3 bg-black border border-[#ffee00] flex flex-col sm:flex-row items-center justify-between gap-3"
+        >
+          <div class="font-code text-xs text-[#ffee00] text-center sm:text-left">
+            <span class="font-bold font-pixel text-[10px] text-[#00ff66]"
+              >&gt; ACESSO EXPRESSO:</span
+            ><br />
+            Abrir chat direto sem preencher formulário
+          </div>
+          <button
+            id="whatsapp-direct-chat-btn"
+            type="button"
+            class="px-4 py-2 bg-[#ffee00] text-black font-pixel text-xs font-bold hover:bg-[#00ff66] transition-colors whitespace-nowrap cursor-pointer shadow-[2px_2px_0px_#00ff66]"
+          >
+            FALAR AGORA ↗
+          </button>
+        </div>
+
+        <!-- Custom Meeting Form -->
+        <form id="whatsapp-schedule-form" class="space-y-4 pt-1 border-t border-[#00ff66]/30">
+          <div class="font-pixel text-[10px] text-[#00ff66]">
+            OU PERSONALIZE O BRIEFING DA REUNIÃO:
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="space-y-1">
+              <label class="font-pixel text-[9px] text-[#00ff66]">SEU NOME / EMPRESA *</label>
+              <input
+                type="text"
+                id="wa-client-name"
+                required
+                placeholder="Ex: Carlos / Startup X"
+                class="w-full p-2 bg-black border border-[#00ff66] font-code text-xs text-[#ffee00] focus:outline-none focus:border-[#ffee00]"
+              />
+            </div>
+
+            <div class="space-y-1">
+              <label class="font-pixel text-[9px] text-[#00ff66]">EMPRESA / CARGO (OPCIONAL)</label>
+              <input
+                type="text"
+                id="wa-client-company"
+                placeholder="Ex: Fundador / CTO"
+                class="w-full p-2 bg-black border border-[#00ff66] font-code text-xs text-[#ffee00] focus:outline-none focus:border-[#ffee00]"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <label class="font-pixel text-[9px] text-[#00ff66]">OBJETIVO DA REUNIÃO *</label>
+            <select
+              id="wa-meeting-topic"
+              class="w-full p-2 bg-black border border-[#00ff66] font-code text-xs text-[#ffee00] focus:outline-none focus:border-[#ffee00]"
+            >
+              <option value="Desenvolvimento de Nova Aplicação Web (Full-Stack)">
+                Desenvolvimento de Nova Aplicação Web (Full-Stack)
+              </option>
+              <option value="Landing Page Brutalista de Alto Impacto">
+                Landing Page Brutalista de Alto Impacto
+              </option>
+              <option value="Arquitetura de Software & Consultoria Técnica">
+                Arquitetura de Software &amp; Consultoria Técnica
+              </option>
+              <option value="Backend Node.js / Express & Integração de APIs">
+                Backend Node.js / Express &amp; Integração de APIs
+              </option>
+              <option value="Validação de Orçamento & Prazo de Entrega">
+                Validação de Orçamento &amp; Prazo de Entrega
+              </option>
+            </select>
+          </div>
+
+          <div class="space-y-1">
+            <label class="font-pixel text-[9px] text-[#00ff66]"
+              >PREFERÊNCIA DE HORÁRIO / TURNO *</label
+            >
+            <select
+              id="wa-meeting-shift"
+              class="w-full p-2 bg-black border border-[#00ff66] font-code text-xs text-[#ffee00] focus:outline-none focus:border-[#ffee00]"
+            >
+              <option value="O quanto antes / Horário Comercial Imediato">
+                O quanto antes / Horário Comercial Imediato
+              </option>
+              <option value="Manhã (09:00 - 12:00)">Manhã (09:00 - 12:00)</option>
+              <option value="Tarde (14:00 - 18:00)">Tarde (14:00 - 18:00)</option>
+              <option value="Noite (19:00 - 21:00)">Noite (19:00 - 21:00)</option>
+            </select>
+          </div>
+
+          <div id="wa-budget-row" class="space-y-1 hidden">
+            <label class="font-pixel text-[9px] text-[#00ff66]">ORÇAMENTO ESTIMADO</label>
+            <input
+              type="text"
+              id="wa-budget-info"
+              readonly
+              class="w-full p-2 bg-[#080d08] border border-[#ffee00] font-code text-xs text-[#ffee00]"
+            />
+          </div>
+
+          <div class="space-y-1">
+            <label class="font-pixel text-[9px] text-[#00ff66]">MENSAGEM / ESCOPO RESUMIDO</label>
+            <textarea
+              id="wa-meeting-notes"
+              rows="2"
+              placeholder="Descreva brevemente sua ideia ou necessidades para a reunião..."
+              class="w-full p-2 bg-black border border-[#00ff66] font-code text-xs text-[#00ff66] focus:outline-none focus:border-[#ffee00]"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            id="wa-schedule-submit-btn"
+            class="w-full py-3 bg-[#00ff66] text-[#050805] font-pixel text-xs sm:text-sm font-bold border-2 border-black hover:bg-[#ffee00] transition-colors shadow-[4px_4px_0px_#ffee00] flex items-center justify-center gap-2 cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
+          >
+            <span>💬</span> ENVIAR AGENDAMENTO NO WHATSAPP ↗
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- CLIENT ES6 ENTRY POINT -->
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

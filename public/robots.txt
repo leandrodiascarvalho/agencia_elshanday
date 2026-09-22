@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elshanday.dev/sitemap.xml

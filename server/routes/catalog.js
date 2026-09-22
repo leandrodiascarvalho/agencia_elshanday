@@ -7,14 +7,14 @@ const router = Router();
 router.get('/services', (req, res) => {
   res.json({
     success: true,
-    data: SERVICES
+    data: SERVICES,
   });
 });
 
 router.get('/faq', (req, res) => {
   res.json({
     success: true,
-    data: FAQ
+    data: FAQ,
   });
 });
 

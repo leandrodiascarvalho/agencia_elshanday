@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="labGrad800" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080307" />
+      <stop offset="50%" stop-color="#160813" />
+      <stop offset="100%" stop-color="#050104" />
+    </linearGradient>
+    <pattern id="pixelGrid800" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="none" stroke="#ffee00" stroke-width="0.5" stroke-opacity="0.12" />
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#labGrad800)" />
+  <rect width="800" height="500" fill="url(#pixelGrid800)" />
+  
+  <!-- Dual CRT Workbench Setup -->
+  <!-- Left Terminal Monitor -->
+  <rect x="80" y="90" width="300" height="230" fill="#040804" stroke="#00ff66" stroke-width="4" rx="6" />
+  <rect x="95" y="105" width="270" height="185" fill="#000000" stroke="#00ff66" stroke-width="2" />
+  <text x="110" y="135" fill="#00ff66" font-family="monospace" font-size="13" font-weight="bold">&gt; CSS_GRID_INSPECTOR</text>
+  <text x="110" y="160" fill="#ffee00" font-family="monospace" font-size="11">grid-template-columns: 1fr 2fr;</text>
+  <text x="110" y="185" fill="#00f0ff" font-family="monospace" font-size="11">gap: 1.5rem;</text>
+  <text x="110" y="210" fill="#ff007f" font-family="monospace" font-size="11">padding: clamp(1rem, 3vw, 2.5rem);</text>
+  <text x="110" y="235" fill="#00ff66" font-family="monospace" font-size="11">height: min(85vh, 600px);</text>
+  <text x="110" y="260" fill="#ffee00" font-family="monospace" font-size="11">@media (max-width: 640px) { ... }</text>
+  
+  <!-- Right Vector Monitor -->
+  <rect x="420" y="90" width="300" height="230" fill="#060205" stroke="#ff007f" stroke-width="4" rx="6" />
+  <rect x="435" y="105" width="270" height="185" fill="#000000" stroke="#ff007f" stroke-width="2" />
+  <text x="450" y="135" fill="#ff007f" font-family="monospace" font-size="13" font-weight="bold">&gt; RESPONSIVE_PREVIEW</text>
+  <!-- Wireframe layout mockup inside monitor -->
+  <rect x="450" y="150" width="115" height="40" fill="#ff007f" fill-opacity="0.3" stroke="#ff007f" stroke-width="1.5" />
+  <rect x="575" y="150" width="115" height="40" fill="#00f0ff" fill-opacity="0.3" stroke="#00f0ff" stroke-width="1.5" />
+  <rect x="450" y="200" width="240" height="70" fill="#ffee00" fill-opacity="0.2" stroke="#ffee00" stroke-width="1.5" />
+  <text x="490" y="240" fill="#ffee00" font-family="monospace" font-size="11">FLEX / GRID // 800W</text>
+  
+  <!-- Monitor Stands -->
+  <polygon points="200,320 260,320 280,360 180,360" fill="#151515" stroke="#00ff66" stroke-width="2" />
+  <polygon points="540,320 600,320 620,360 520,360" fill="#151515" stroke="#ff007f" stroke-width="2" />
+  
+  <!-- Desk Base Surface -->
+  <rect x="50" y="360" width="700" height="30" fill="#111111" stroke="#ffee00" stroke-width="3" />
+  
+  <!-- Telemetry Bar -->
+  <rect x="120" y="420" width="560" height="34" fill="#0a0308" stroke="#ffee00" stroke-width="2" />
+  <text x="400" y="442" text-anchor="middle" fill="#ffee00" font-family="monospace" font-size="12" font-weight="bold">DIGITAL BRUTALISM WORKBENCH // RESPONSIVE ENGINE [800W]</text>
+</svg>

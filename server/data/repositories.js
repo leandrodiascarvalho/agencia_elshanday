@@ -1,32 +1,32 @@
 export const REPOSITORIES = [
   {
-    id: "repo-elshanday",
-    name: "agencia_elshanday",
-    description: "Cyberpunk interactive web agency platform with 3D WebGL and AI integrations.",
-    language: "JavaScript",
+    id: 'repo-elshanday',
+    name: 'agencia_elshanday',
+    description: 'Cyberpunk interactive web agency platform with 3D WebGL and AI integrations.',
+    language: 'JavaScript',
     stars: 12,
     forks: 3,
-    url: "https://github.com/leandrodiascarvalho/agencia_elshanday",
-    topics: ["cyberpunk", "threejs", "tailwind", "vite", "gemini-ai"]
+    url: 'https://github.com/leandrodiascarvalho/agencia_elshanday',
+    topics: ['cyberpunk', 'threejs', 'tailwind', 'vite', 'gemini-ai'],
   },
   {
-    id: "repo-cyber-dodger",
-    name: "cyber-dodger-engine",
-    description: "2D Canvas mini-game engine with retro arcade neon aesthetics.",
-    language: "JavaScript",
+    id: 'repo-cyber-dodger',
+    name: 'cyber-dodger-engine',
+    description: '2D Canvas mini-game engine with retro arcade neon aesthetics.',
+    language: 'JavaScript',
     stars: 8,
     forks: 1,
-    url: "https://github.com/leandrodiascarvalho/cyber-dodger-engine",
-    topics: ["canvas", "game-dev", "arcade", "retro"]
+    url: 'https://github.com/leandrodiascarvalho/cyber-dodger-engine',
+    topics: ['canvas', 'game-dev', 'arcade', 'retro'],
   },
   {
-    id: "repo-doom-raycaster",
-    name: "doom-cyber-raycaster",
-    description: "Pseudo-3D raycasting engine inspired by classic 90s FPS games.",
-    language: "JavaScript",
+    id: 'repo-doom-raycaster',
+    name: 'doom-cyber-raycaster',
+    description: 'Pseudo-3D raycasting engine inspired by classic 90s FPS games.',
+    language: 'JavaScript',
     stars: 19,
     forks: 5,
-    url: "https://github.com/leandrodiascarvalho/doom-cyber-raycaster",
-    topics: ["raycasting", "doom", "webgl", "retro-gaming"]
-  }
+    url: 'https://github.com/leandrodiascarvalho/doom-cyber-raycaster',
+    topics: ['raycasting', 'doom', 'webgl', 'retro-gaming'],
+  },
 ];

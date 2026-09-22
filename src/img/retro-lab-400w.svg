@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <linearGradient id="labGrad400" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0508" />
+      <stop offset="100%" stop-color="#180a14" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="250" fill="url(#labGrad400)" />
+  <!-- CRT Monitor Box -->
+  <rect x="75" y="40" width="250" height="150" fill="#050805" stroke="#ffee00" stroke-width="3" rx="4" />
+  <rect x="90" y="55" width="220" height="120" fill="#000000" stroke="#00ff66" stroke-width="1.5" />
+  <!-- Pixel typography inside CRT -->
+  <text x="105" y="80" fill="#00ff66" font-family="monospace" font-size="12" font-weight="bold">&gt; PIXEL_LAB_V1</text>
+  <text x="105" y="105" fill="#ffee00" font-family="monospace" font-size="10">CSS GRID: 12 COLS</text>
+  <text x="105" y="125" fill="#ff007f" font-family="monospace" font-size="10">FLEXBOX: ROW-WRAP</text>
+  <text x="105" y="145" fill="#00f0ff" font-family="monospace" font-size="10">UNITS: %, VH, VW, REM, FR</text>
+  <!-- Monitor Stand -->
+  <polygon points="175,190 225,190 240,215 160,215" fill="#111111" stroke="#ffee00" stroke-width="1.5" />
+  <text x="200" y="238" text-anchor="middle" fill="#ffee00" font-family="monospace" font-size="10" font-weight="bold">DESIGN_LAB // 400W</text>
+</svg>

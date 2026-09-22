@@ -1,0 +1,35 @@
+{
+  "name": "Agência El Shanday | Web Design & Retro Gaming",
+  "short_name": "El Shanday",
+  "description": "Engenharia digital de ponta com estética retro-gaming 8-bit e 16-bit.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050805",
+  "theme_color": "#00ff66",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/og-cover.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["business", "entertainment", "utilities"],
+  "lang": "pt-BR"
+}
