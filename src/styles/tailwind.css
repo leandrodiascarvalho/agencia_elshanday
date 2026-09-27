@@ -1,8 +1,24 @@
 @import 'tailwindcss';
 
 @theme {
+  /* Fontes */
   --font-pixel: 'Press Start 2P', cursive;
   --font-terminal: 'VT323', monospace;
   --font-silk: 'Silkscreen', cursive;
   --font-code: 'JetBrains Mono', 'Share Tech Mono', monospace;
+
+  /* Cores base */
+  --color-bg-primary: #050805;
+  --color-bg-secondary: #0a0f0a;
+  --color-bg-card: #080d08;
+  --color-green: #00ff66;
+  --color-green-dark: #008836;
+  --color-yellow: #ffee00;
+  --color-magenta: #ff007f;
+  --color-cyan: #00f0ff;
 }
+
+@import './abstracts/themes.css';
+@import './effects.css';
+@import './abstracts/animations.css';
+@import './abstracts/responsive.css';

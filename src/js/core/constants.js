@@ -13,8 +13,8 @@ export const STORAGE_KEYS = Object.freeze({
 export const APP_THEMES = Object.freeze([
   { id: 'pixel-green', label: '8-Bit Green' },
   { id: 'amber', label: 'Amber Phosphor' },
-  { id: 'cyberpunk', label: 'Cyberpunk Neon' },
-  { id: 'matrix', label: 'Matrix Rain' },
+  { id: 'synthwave', label: 'Synthwave Neon' },
+  { id: 'light', label: 'Light Mode' },
 ]);
 
 export const DEFAULT_THEME = 'pixel-green';

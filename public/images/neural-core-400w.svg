@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <linearGradient id="neuralGrad400" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07040a" />
+      <stop offset="100%" stop-color="#12061c" />
+    </linearGradient>
+    <radialGradient id="coreGlow400" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8" />
+      <stop offset="60%" stop-color="#ff007f" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+  </defs>
+  <rect width="400" height="250" fill="url(#neuralGrad400)" />
+  <!-- Hex Grid Pattern -->
+  <path d="M20 20 L50 20 L65 45 L50 70 L20 70 L5 45 Z M90 20 L120 20 L135 45 L120 70 L90 70 L75 45 Z" stroke="#ff007f" stroke-width="0.8" fill="none" opacity="0.3" />
+  <path d="M280 180 L310 180 L325 205 L310 230 L280 230 L265 205 Z M350 180 L380 180 L395 205 L380 230 L350 230 L335 205 Z" stroke="#00f0ff" stroke-width="0.8" fill="none" opacity="0.3" />
+  <!-- Neural Core Center -->
+  <circle cx="200" cy="125" r="70" fill="url(#coreGlow400)" />
+  <circle cx="200" cy="125" r="45" fill="none" stroke="#00f0ff" stroke-width="2.5" stroke-dasharray="8 4" />
+  <circle cx="200" cy="125" r="25" fill="#ff007f" fill-opacity="0.4" stroke="#ffee00" stroke-width="2" />
+  <circle cx="200" cy="125" r="10" fill="#00ff66" />
+  <!-- Neural Synapse Connectors -->
+  <line x1="60" y1="60" x2="160" y2="105" stroke="#00f0ff" stroke-width="1.5" />
+  <line x1="340" y1="60" x2="240" y2="105" stroke="#ff007f" stroke-width="1.5" />
+  <line x1="80" y1="190" x2="165" y2="145" stroke="#ffee00" stroke-width="1.5" />
+  <line x1="320" y1="190" x2="235" y2="145" stroke="#00ff66" stroke-width="1.5" />
+  <text x="200" y="220" text-anchor="middle" fill="#00f0ff" font-family="monospace" font-size="11" font-weight="bold">NEURAL_KERNEL // 400W</text>
+</svg>

@@ -1,0 +1,432 @@
+/* Grids de fundo */
+.bg-retro-grid {
+  background-size: 32px 32px;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+.bg-retro-grid-dense {
+  background-size: 16px 16px;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+/* Scanlines estáticas */
+.scanlines {
+  position: relative;
+}
+
+.scanlines::before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 40;
+  background-size:
+    100% 3px,
+    6px 100%;
+  pointer-events: none;
+}
+
+/* CRT overlay + flicker */
+body.crt-overlay::before {
+  content: ' ';
+  display: block;
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 60, 0.03),
+      rgba(0, 255, 102, 0.015),
+      rgba(0, 240, 255, 0.03)
+    ),
+    radial-gradient(ellipse at center, transparent 65%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 9990;
+  background-size:
+    100% 3px,
+    6px 100%,
+    100% 100%;
+  pointer-events: none;
+  animation: crt-screen-flicker 0.18s infinite;
+}
+
+body.crt-overlay::after {
+  content: ' ';
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 16vh;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 255, 102, 0.03) 35%,
+    rgba(255, 255, 255, 0.07) 50%,
+    rgba(0, 255, 102, 0.03) 65%,
+    transparent 100%
+  );
+  z-index: 9991;
+  pointer-events: none;
+  animation: crt-scanline-sweep 7s linear infinite;
+  mix-blend-mode: screen;
+}
+
+/* Botões de navegação do header */
+.header-nav-btn {
+  letter-spacing: 0.05em;
+  user-select: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.header-nav-btn:active {
+  transform: translate(1px, 1px);
+}
+
+.header-interactive-btn {
+  user-select: none;
+  transition: all 0.15s ease-in-out;
+}
+
+#sound-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+#sound-toggle-btn:hover,
+#sound-toggle-btn.is-glitching {
+  animation: sound-btn-glitch 0.24s steps(2, end);
+}
+
+#sound-toggle-btn:active {
+  transform: translate(2px, 2px);
+  animation: none;
+}
+
+/* Tooltip cyberpunk customizado */
+.cyber-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  z-index: 100;
+  pointer-events: none;
+  background-color: #050805;
+  padding: 8px 12px;
+  font-family: var(--font-code), monospace;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.15s steps(3, end),
+    transform 0.15s steps(3, end),
+    visibility 0.15s steps(3, end);
+  box-shadow: 4px 4px 0px 0px #000000;
+  border: 2px solid var(--accent-green, #00ff66);
+}
+
+.cyber-tooltip.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.cyber-tooltip .cyber-tooltip-notch {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 6px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color: var(--accent-green, #00ff66);
+}
+
+.cyber-tooltip.cyber-tooltip-on {
+  border-color: #00ff66;
+  box-shadow:
+    4px 4px 0px 0px #000000,
+    0 0 12px rgba(0, 255, 102, 0.35);
+}
+
+.cyber-tooltip.cyber-tooltip-on .cyber-tooltip-notch {
+  background-color: #00ff66;
+}
+
+.cyber-tooltip.cyber-tooltip-off {
+  border-color: #ff007f;
+  box-shadow:
+    4px 4px 0px 0px #000000,
+    0 0 12px rgba(255, 0, 127, 0.35);
+}
+
+.cyber-tooltip.cyber-tooltip-off .cyber-tooltip-notch {
+  background-color: #ff007f;
+}
+
+.cyber-tooltip .cyber-tooltip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px dashed rgba(0, 240, 255, 0.3);
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+}
+
+.cyber-tooltip .cyber-tooltip-tag {
+  font-family: var(--font-pixel), monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  color: #00f0ff;
+}
+
+.cyber-tooltip .cyber-tooltip-chip {
+  font-family: var(--font-pixel), monospace;
+  font-size: 7px;
+  color: #ffee00;
+  background: rgba(255, 238, 0, 0.1);
+  padding: 1px 4px;
+  border: 1px solid rgba(255, 238, 0, 0.4);
+}
+
+.cyber-tooltip .cyber-tooltip-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.cyber-tooltip .cyber-pixel-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 0;
+}
+
+.cyber-tooltip .cyber-tooltip-action-badge {
+  font-size: 9px;
+  font-family: var(--font-code), monospace;
+  font-weight: 700;
+  padding: 1px 5px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid currentColor;
+}
+
+.cyber-tooltip .cyber-tooltip-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 5px;
+  padding-top: 4px;
+  border-top: 1px dotted rgba(255, 255, 255, 0.1);
+  font-size: 8px;
+  color: #889988;
+  font-family: var(--font-code), monospace;
+}
+
+/* Sombras pixeladas */
+.pixel-shadow-green {
+  box-shadow: 4px 4px 0px 0px var(--color-green);
+}
+.pixel-shadow-yellow {
+  box-shadow: 4px 4px 0px 0px var(--color-yellow);
+}
+.pixel-shadow-magenta {
+  box-shadow: 4px 4px 0px 0px var(--color-magenta);
+}
+.pixel-shadow-cyan {
+  box-shadow: 4px 4px 0px 0px var(--color-cyan);
+}
+.pixel-shadow-black {
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+.pixel-shadow-sm {
+  box-shadow: 2px 2px 0px 0px currentColor;
+}
+.pixel-shadow-lg {
+  box-shadow: 6px 6px 0px 0px currentColor;
+}
+
+/* Hazard striping */
+.hazard-stripe {
+  background: repeating-linear-gradient(-45deg, #ffee00, #ffee00 10px, #111111 10px, #111111 20px);
+}
+
+/* Scrollbar retrô */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050805;
+  border-left: 1px solid rgba(0, 255, 102, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: #00ff66;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffee00;
+}
+
+/* CRT degauss & aberração cromática */
+.crt-degauss-layer {
+  position: relative;
+  will-change: transform, filter;
+}
+
+.crt-degauss-flash-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(0, 255, 102, 0.12) 35%,
+    rgba(255, 0, 127, 0.08) 70%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.crt-scanline-beam {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  box-shadow:
+    0 0 18px 6px #00ff66,
+    0 0 36px 12px #ffee00,
+    0 0 54px 18px #ff007f;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+}
+
+/* Card de imagem responsivo */
+.responsive-picture {
+  display: block;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  image-rendering: auto;
+}
+
+.cyber-image-frame {
+  position: relative;
+  width: 100%;
+  background-color: #030603;
+  border: 2px solid var(--border-color, #00ff66);
+  box-shadow: 4px 4px 0px 0px var(--border-color, #00ff66);
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cyber-image-frame:hover {
+  border-color: #ffee00;
+  box-shadow: 4px 4px 0px 0px #ffee00;
+}
+
+.cyber-image-frame .image-aspect-ratio-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #050a05;
+  overflow: hidden;
+}
+
+.cyber-image-frame .image-aspect-ratio-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cyber-image-frame .image-hud-overlay {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.cyber-image-frame .image-resolution-tag {
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid currentColor;
+  font-family: var(--font-pixel), monospace;
+  font-size: 0.5625rem;
+  padding: 0.2em 0.5em;
+  letter-spacing: 0.05em;
+}
+
+/* Badges e botões retrô */
+.cyber-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.3em 0.8em;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.cyber-btn-responsive {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.75rem 1.5rem;
+  font-size: clamp(0.75rem, 0.9vw + 0.3rem, 0.875rem);
+  line-height: 1.4;
+  white-space: nowrap;
+  transition: all 0.15s ease-in-out;
+}
+
+/* Live sync (WebSocket) */
+#header-live-sync {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#header-live-sync:hover {
+  border-color: #ffee00;
+  box-shadow: 2px 2px 0px #ffee00;
+  transform: translateY(-1px);
+}
+
+#header-live-sync:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0px #ffee00;
+}

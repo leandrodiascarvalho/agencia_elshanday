@@ -41,6 +41,17 @@ export const state = {
   activeFilter: 'all',
   cartridgeScore: 999990,
   activeModal: null,
+  activeUsers: 1,
+  wsConnected: false,
+  wsLatency: 0,
+  searchQuery: '',
+  selectedLanguage: 'ALL',
+  faqItems: [],
+  faqSearch: '',
+  faqCategory: 'ALL',
+  systemLogs: [],
+  repositories: [],
+  stats: null,
 };
 
 export const listeners = new Set();

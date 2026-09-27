@@ -1,4 +1,5 @@
 import { state, setState } from './state.js';
+import { APP_THEMES } from './constants.js';
 import { audio } from '../services/audio.js';
 import { CyberspaceParticles } from '../effects/cyberspaceParticles.js';
 import { CyberTerminal } from '../components/terminal.js';
@@ -29,6 +30,7 @@ export class App {
     this.initThemeAndCrt();
     this.bindGlobalNavigation();
     this.bindActionButtons();
+    this.bindGlobalEvents();
     this.bindKeyboardShortcuts();
     this.initRouter();
   }
@@ -44,22 +46,17 @@ export class App {
   initThemeAndCrt() {
     const htmlEl = document.documentElement;
 
-    // Apply active theme
-    const themes = [
-      { id: 'pixel-green', label: '8-Bit Green' },
-      { id: 'amber', label: 'Amber Phosphor' },
-      { id: 'cyberpunk', label: 'Cyberpunk Neon' },
-      { id: 'matrix', label: 'Matrix Rain' },
-    ];
-
+    // Apply active theme using APP_THEMES from constants (single source of truth)
+    // SCSS uses html.amber, html.synthwave, html.light class selectors
     const applyTheme = (themeId) => {
-      if (themeId === 'pixel-green') {
-        htmlEl.removeAttribute('data-theme');
-      } else {
-        htmlEl.setAttribute('data-theme', themeId);
+      // Remove all theme classes first
+      APP_THEMES.forEach((t) => htmlEl.classList.remove(t.id));
+      // Apply new theme class (pixel-green is the default, no class needed)
+      if (themeId !== 'pixel-green') {
+        htmlEl.classList.add(themeId);
       }
       const labelEl = document.getElementById('current-theme-label');
-      const found = themes.find((t) => t.id === themeId);
+      const found = APP_THEMES.find((t) => t.id === themeId);
       if (labelEl && found) {
         labelEl.textContent = found.label;
       }
@@ -70,8 +67,8 @@ export class App {
     const themeBtn = document.getElementById('theme-cycle-btn');
     if (themeBtn) {
       themeBtn.addEventListener('click', () => {
-        const currentIdx = themes.findIndex((t) => t.id === (state.theme || 'pixel-green'));
-        const nextTheme = themes[(currentIdx + 1) % themes.length];
+        const currentIdx = APP_THEMES.findIndex((t) => t.id === (state.theme || 'pixel-green'));
+        const nextTheme = APP_THEMES[(currentIdx + 1) % APP_THEMES.length];
         setState({ theme: nextTheme.id });
         applyTheme(nextTheme.id);
         audio.playCoin();
@@ -97,11 +94,6 @@ export class App {
       });
     }
 
-    // Audio status button sync
-    const audioBtn = document.getElementById('btn-audio-toggle');
-    if (audioBtn) {
-      audioBtn.textContent = `🔊 AUDIO: [${state.soundEnabled ? 'ON' : 'OFF'}]`;
-    }
   }
 
   initRouter() {
@@ -115,7 +107,8 @@ export class App {
   }
 
   bindGlobalNavigation() {
-    const tabs = document.querySelectorAll('.nav-tab');
+    // Bind header nav buttons, footer links, and logo
+    const tabs = document.querySelectorAll('.header-nav-btn[data-tab], .footer-tab-link[data-tab], #header-logo-btn[data-tab]');
     tabs.forEach((tab) => {
       tab.addEventListener('click', (e) => {
         e.preventDefault();
@@ -127,7 +120,7 @@ export class App {
     });
   }
 
-  navigateTo(tab, updateHash = true) {
+  async navigateTo(tab, updateHash = true) {
     audio.cyberClick();
     setState({ currentTab: tab });
 
@@ -136,11 +129,15 @@ export class App {
     }
 
     // Update active tab UI
-    document.querySelectorAll('.nav-tab').forEach((t) => {
+    document.querySelectorAll('.header-nav-btn[data-tab]').forEach((t) => {
       const match = t.getAttribute('data-tab') === tab;
-      t.className = match
-        ? 'nav-tab active px-3 py-1.5 transition text-[#050805] bg-[#00ff66] font-bold cursor-pointer'
-        : 'nav-tab px-3 py-1.5 transition text-slate-400 hover:text-[#ffee00] cursor-pointer';
+      if (match) {
+        t.classList.add('bg-[#00ff66]', 'text-[#050805]', 'font-bold', 'border-[#00ff66]');
+        t.classList.remove('bg-transparent', 'text-[#00ff66]', 'border-transparent', 'hover:text-[#ffee00]');
+      } else {
+        t.classList.remove('bg-[#00ff66]', 'text-[#050805]', 'font-bold');
+        t.classList.add('bg-transparent', 'text-[#00ff66]', 'border-transparent', 'hover:text-[#ffee00]');
+      }
     });
 
     if (!this.mainContent) return;
@@ -156,7 +153,7 @@ export class App {
         this.currentViewCleanup = renderHome(this.mainContent, (t) => (window.location.hash = t));
         break;
       case 'services':
-        this.currentViewCleanup = renderServices(
+        this.currentViewCleanup = await renderServices(
           this.mainContent,
           (t) => (window.location.hash = t)
         );
@@ -181,19 +178,18 @@ export class App {
   }
 
   bindActionButtons() {
-    // Audio Toggle
-    const audioBtn = document.getElementById('btn-audio-toggle');
+    // Sound/Audio Toggle (matches #sound-toggle-btn in index.html)
+    const audioBtn = document.getElementById('sound-toggle-btn');
     if (audioBtn) {
       audioBtn.addEventListener('click', () => {
         const next = !state.soundEnabled;
         setState({ soundEnabled: next });
-        audioBtn.textContent = `🔊 AUDIO: [${next ? 'ON' : 'OFF'}]`;
         if (next) audio.play1Up();
       });
     }
 
-    // AI Chat Modal
-    const aiBtn = document.getElementById('btn-ai-chat');
+    // AI Chat Modal (matches #fab-ai-assistant-btn in index.html)
+    const aiBtn = document.getElementById('fab-ai-assistant-btn');
     if (aiBtn) {
       aiBtn.addEventListener('click', () => {
         audio.cyberClick();
@@ -201,8 +197,8 @@ export class App {
       });
     }
 
-    // Terminal Modal
-    const termBtn = document.getElementById('btn-terminal');
+    // Terminal Modal (matches #fab-terminal-btn in index.html)
+    const termBtn = document.getElementById('fab-terminal-btn');
     if (termBtn) {
       termBtn.addEventListener('click', () => {
         audio.cyberClick();
@@ -210,41 +206,60 @@ export class App {
       });
     }
 
-    // Search Command Palette
-    const searchBtn = document.getElementById('btn-search');
-    if (searchBtn) {
-      searchBtn.addEventListener('click', () => {
+    // Search Command Palette (matches #open-search-btn and #open-search-btn-mobile in index.html)
+    const searchBtns = document.querySelectorAll('#open-search-btn, #open-search-btn-mobile');
+    searchBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
         audio.cyberClick();
         new CommandSearchModal(this.modalContainer, (t) => (window.location.hash = t)).mount();
       });
-    }
+    });
 
-    // Minigame Dodger
-    const gameBtn = document.getElementById('btn-open-game');
-    if (gameBtn) {
-      gameBtn.addEventListener('click', () => {
-        audio.cyberClick();
-        new CyberDodgerGame(this.modalContainer).mount();
-      });
-    }
-
-    // Minigame Doom
-    const doomBtn = document.getElementById('btn-open-doom');
-    if (doomBtn) {
-      doomBtn.addEventListener('click', () => {
-        audio.cyberClick();
-        new DoomRaycaster(this.modalContainer).mount();
-      });
-    }
-
-    // WhatsApp Scheduler Modal trigger
-    const waBtn = document.getElementById('btn-whatsapp');
-    if (waBtn) {
-      waBtn.addEventListener('click', () => {
+    // WhatsApp Scheduler Modal (matches #fab-whatsapp-btn, #footer-whatsapp-btn in index.html)
+    const waBtns = document.querySelectorAll('#fab-whatsapp-btn, #footer-whatsapp-btn');
+    waBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
         audio.cyberClick();
         new WhatsappSchedulerModal(this.modalContainer).mount();
       });
-    }
+    });
+
+    // Header CTA buttons (START_PROJECT)
+    const ctaBtns = document.querySelectorAll('#header-cta-btn, #header-cta-btn-mobile');
+    ctaBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        audio.cyberClick();
+        window.location.hash = 'briefing';
+      });
+    });
+  }
+
+  bindGlobalEvents() {
+    // Listen for custom events dispatched by views
+    window.addEventListener('app:open-whatsapp', () => {
+      audio.cyberClick();
+      new WhatsappSchedulerModal(this.modalContainer).mount();
+    });
+
+    window.addEventListener('app:open-game', () => {
+      audio.cyberClick();
+      new CyberDodgerGame(this.modalContainer).mount();
+    });
+
+    window.addEventListener('app:open-doom', () => {
+      audio.cyberClick();
+      new DoomRaycaster(this.modalContainer).mount();
+    });
+
+    window.addEventListener('app:open-terminal', () => {
+      audio.cyberClick();
+      new CyberTerminal(this.modalContainer).mount();
+    });
+
+    window.addEventListener('app:open-ai', () => {
+      audio.cyberClick();
+      new AiAssistantModal(this.modalContainer).mount();
+    });
   }
 
   bindKeyboardShortcuts() {
@@ -255,7 +270,7 @@ export class App {
         audio.cyberClick();
         new CommandSearchModal(this.modalContainer, (t) => (window.location.hash = t)).mount();
       }
-      // Esc to clear modals if click outside
+      // Esc to clear modals
       if (e.key === 'Escape' && this.modalContainer) {
         this.modalContainer.innerHTML = '';
       }

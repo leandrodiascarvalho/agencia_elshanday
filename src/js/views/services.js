@@ -1,4 +1,4 @@
-import { SERVICES } from '../../../server/data/services.js';
+import { ApiClient } from '../services/apiClient.js';
 import { audio } from '../services/audio.js';
 import { formatCurrencyBRL } from '../utils/formatters.js';
 import { escapeHtml } from '../utils/dom.js';
@@ -9,8 +9,16 @@ import { escapeHtml } from '../utils/dom.js';
  * @param {HTMLElement} container
  * @param {Function} navigateTo
  */
-export function renderServices(container, navigateTo) {
-  const cardsHtml = SERVICES.map((service, index) => {
+export async function renderServices(container, navigateTo) {
+  let services;
+  try {
+    const data = await ApiClient.get('/api/services');
+    services = data.services || [];
+  } catch {
+    services = [];
+  }
+
+  const cardsHtml = services.map((service, index) => {
     const tagsHtml = (service.tags || [])
       .map(
         (tag) =>
@@ -72,12 +80,12 @@ export function renderServices(container, navigateTo) {
         </h3>
         <p class="font-['VT323'] text-xl text-[#00ff66] leading-relaxed">
           Nossas aplicações são desenvolvidas com foco na arquitetura nativa do navegador:
-          <strong>HTML5 Semântico</strong>, <strong>Tailwind CSS &amp; Sass Modular</strong>, <strong>JavaScript ES6 Nativo</strong>, e <strong>Node.js + Express</strong> para endpoints de altíssima performance.
+          <strong>HTML5 Semântico</strong>, <strong>Tailwind CSS &amp; CSS3 Modular</strong>, <strong>JavaScript ES6 Nativo</strong>, e <strong>Node.js + Express</strong> para endpoints de altíssima performance.
         </p>
 
         <div class="flex flex-wrap gap-2 pt-2 font-['Press_Start_2P'] text-[9px]">
           <span class="px-3 py-1 bg-black border border-[#00ff66] text-[#00ff66]">HTML5 / CANVAS 2D</span>
-          <span class="px-3 py-1 bg-black border border-[#ffee00] text-[#ffee00]">SCSS RETRO</span>
+          <span class="px-3 py-1 bg-black border border-[#ffee00] text-[#ffee00]">CSS3 MODULAR</span>
           <span class="px-3 py-1 bg-black border border-[#00f0ff] text-[#00f0ff]">TAILWIND CSS</span>
           <span class="px-3 py-1 bg-black border border-[#ff007f] text-[#ff007f]">VANILLA ES6+</span>
           <span class="px-3 py-1 bg-black border border-[#ffee00] text-[#ffee00]">NODE + EXPRESS</span>

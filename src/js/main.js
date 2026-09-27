@@ -1,11 +1,14 @@
 import '../styles/tailwind.css';
-import '../styles/main.scss';
 import { App } from './core/app.js';
+import { initWebSocket } from './utils/websocket.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new App();
   app.init();
   window.__EL_SHANDAY_APP__ = app;
+
+  // Initialize real-time WebSocket connection for LIVE_SYNC
+  initWebSocket();
 
   // Register PWA Service Worker in production / supported environments
   if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {

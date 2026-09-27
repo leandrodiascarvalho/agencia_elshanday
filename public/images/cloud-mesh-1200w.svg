@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="cloudGrad1200" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#02080a" />
+      <stop offset="40%" stop-color="#051c24" />
+      <stop offset="70%" stop-color="#020d12" />
+      <stop offset="100%" stop-color="#010406" />
+    </linearGradient>
+    <pattern id="isometricGrid1200" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 30 L 60 60 L 120 30 Z" fill="none" stroke="#00f0ff" stroke-width="0.75" stroke-opacity="0.18" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="750" fill="url(#cloudGrad1200)" />
+  <rect width="1200" height="750" fill="url(#isometricGrid1200)" />
+  
+  <!-- Massive Mesh Network Topology -->
+  <polygon points="600,100 950,250 800,560 400,560 250,250" fill="#030f14" fill-opacity="0.8" stroke="#00f0ff" stroke-width="4" />
+  <polygon points="600,190 830,300 720,490 480,490 370,300" fill="#051c24" fill-opacity="0.6" stroke="#00ff66" stroke-width="3" stroke-dasharray="8 6" />
+  
+  <!-- Interconnected Data Streams -->
+  <line x1="600" y1="350" x2="600" y2="100" stroke="#ffee00" stroke-width="3" />
+  <line x1="600" y1="350" x2="950" y2="250" stroke="#00f0ff" stroke-width="3" />
+  <line x1="600" y1="350" x2="800" y2="560" stroke="#ff007f" stroke-width="3" />
+  <line x1="600" y1="350" x2="400" y2="560" stroke="#00ff66" stroke-width="3" />
+  <line x1="600" y1="350" x2="250" y2="250" stroke="#ffee00" stroke-width="3" />
+  
+  <!-- Cross mesh latitudinal lines -->
+  <line x1="250" y1="250" x2="800" y2="560" stroke="#00f0ff" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="10 5" />
+  <line x1="950" y1="250" x2="400" y2="560" stroke="#ff007f" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="10 5" />
+  
+  <!-- Central Mega-Hub Router -->
+  <circle cx="600" cy="350" r="50" fill="#010608" stroke="#00f0ff" stroke-width="6" />
+  <circle cx="600" cy="350" r="28" fill="#ffee00" />
+  <text x="600" y="356" text-anchor="middle" fill="#02080a" font-family="monospace" font-size="16" font-weight="bold">CORE_ROUTER</text>
+  
+  <!-- Node Modules & Cluster Specs -->
+  <rect x="490" y="55" width="220" height="36" fill="#020b0e" stroke="#00f0ff" stroke-width="2" />
+  <text x="600" y="78" text-anchor="middle" fill="#00f0ff" font-family="monospace" font-size="13" font-weight="bold">NODE_ALPHA // US-EAST [12ms]</text>
+  
+  <rect x="910" y="230" width="230" height="36" fill="#020b0e" stroke="#ffee00" stroke-width="2" />
+  <text x="1025" y="253" text-anchor="middle" fill="#ffee00" font-family="monospace" font-size="13" font-weight="bold">NODE_BRAVO // EU-CENTRAL [28ms]</text>
+  
+  <rect x="750" y="580" width="230" height="36" fill="#020b0e" stroke="#ff007f" stroke-width="2" />
+  <text x="865" y="603" text-anchor="middle" fill="#ff007f" font-family="monospace" font-size="13" font-weight="bold">NODE_CHARLIE // SA-SAO-PAULO [8ms]</text>
+  
+  <rect x="220" y="580" width="230" height="36" fill="#020b0e" stroke="#00ff66" stroke-width="2" />
+  <text x="335" y="603" text-anchor="middle" fill="#00ff66" font-family="monospace" font-size="13" font-weight="bold">NODE_DELTA // AP-TOKYO [45ms]</text>
+  
+  <rect x="40" y="230" width="230" height="36" fill="#020b0e" stroke="#ffee00" stroke-width="2" />
+  <text x="155" y="253" text-anchor="middle" fill="#ffee00" font-family="monospace" font-size="13" font-weight="bold">REDIS_SYNC_SHARDS // 1.2M OPS</text>
+  
+  <!-- Top & Bottom HUD Headers -->
+  <rect x="180" y="670" width="840" height="36" fill="#020a0d" stroke="#00f0ff" stroke-width="2" />
+  <text x="600" y="694" text-anchor="middle" fill="#00f0ff" font-family="monospace" font-size="14" font-weight="bold">GLOBAL CLOUD INFRASTRUCTURE // HIGH AVAILABILITY MULTI-REGION MESH [1200W]</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="cloudGrad800" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#02080a" />
+      <stop offset="50%" stop-color="#051c24" />
+      <stop offset="100%" stop-color="#010507" />
+    </linearGradient>
+    <pattern id="isometricGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 20 L 40 40 L 80 20 Z" fill="none" stroke="#00f0ff" stroke-width="0.5" stroke-opacity="0.15" />
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#cloudGrad800)" />
+  <rect width="800" height="500" fill="url(#isometricGrid)" />
+  
+  <!-- Cloud Geo Mesh -->
+  <polygon points="400,60 620,160 520,340 280,340 180,160" fill="#041218" fill-opacity="0.7" stroke="#00f0ff" stroke-width="3" />
+  <polygon points="400,120 540,190 480,300 320,300 260,190" fill="#061c24" fill-opacity="0.6" stroke="#00ff66" stroke-width="2" stroke-dasharray="6 4" />
+  
+  <!-- Internal Star Network -->
+  <line x1="400" y1="210" x2="400" y2="60" stroke="#ffee00" stroke-width="2" />
+  <line x1="400" y1="210" x2="620" y2="160" stroke="#00f0ff" stroke-width="2" />
+  <line x1="400" y1="210" x2="520" y2="340" stroke="#ff007f" stroke-width="2" />
+  <line x1="400" y1="210" x2="280" y2="340" stroke="#00ff66" stroke-width="2" />
+  <line x1="400" y1="210" x2="180" y2="160" stroke="#ffee00" stroke-width="2" />
+  
+  <!-- Center Core -->
+  <circle cx="400" cy="210" r="28" fill="#02080a" stroke="#00f0ff" stroke-width="4" />
+  <circle cx="400" cy="210" r="14" fill="#ffee00" />
+  <text x="400" y="214" text-anchor="middle" fill="#050805" font-family="monospace" font-size="10" font-weight="bold">HUB</text>
+  
+  <!-- Outer Node Badges -->
+  <rect x="330" y="30" width="140" height="24" fill="#030c10" stroke="#00f0ff" stroke-width="1.5" />
+  <text x="400" y="46" text-anchor="middle" fill="#00f0ff" font-family="monospace" font-size="10">NODE_US_EAST // 12ms</text>
+  
+  <rect x="580" y="148" width="150" height="24" fill="#030c10" stroke="#ffee00" stroke-width="1.5" />
+  <text x="655" y="164" text-anchor="middle" fill="#ffee00" font-family="monospace" font-size="10">NODE_EU_CENTRAL // 28ms</text>
+  
+  <rect x="470" y="350" width="150" height="24" fill="#030c10" stroke="#ff007f" stroke-width="1.5" />
+  <text x="545" y="366" text-anchor="middle" fill="#ff007f" font-family="monospace" font-size="10">NODE_SA_BRAZIL // 8ms</text>
+  
+  <rect x="180" y="350" width="150" height="24" fill="#030c10" stroke="#00ff66" stroke-width="1.5" />
+  <text x="255" y="366" text-anchor="middle" fill="#00ff66" font-family="monospace" font-size="10">API_GATEWAY_V3 // OK</text>
+  
+  <rect x="70" y="148" width="150" height="24" fill="#030c10" stroke="#ffee00" stroke-width="1.5" />
+  <text x="145" y="164" text-anchor="middle" fill="#ffee00" font-family="monospace" font-size="10">REDIS_SHARD // SYNC</text>
+  
+  <!-- Telemetry Bar -->
+  <rect x="150" y="430" width="500" height="34" fill="#030c10" stroke="#00f0ff" stroke-width="2" />
+  <text x="400" y="452" text-anchor="middle" fill="#00f0ff" font-family="monospace" font-size="12" font-weight="bold">GLOBAL DISTRIBUTED EDGE MESH // 800W RESOLUTION</text>
+</svg>

@@ -314,8 +314,8 @@ export function renderBriefing(container) {
     submitBtn.textContent = 'TRANSMITINDO DADOS...';
 
     const payload = {
-      name: container.querySelector('#client-name').value.trim(),
-      email: container.querySelector('#client-email').value.trim(),
+      clientName: container.querySelector('#client-name').value.trim(),
+      clientEmail: container.querySelector('#client-email').value.trim(),
       projectType: projTypeInput.value,
       budget: budgetInput.value,
       description: container.querySelector('#briefing-desc').value.trim(),
@@ -325,7 +325,7 @@ export function renderBriefing(container) {
       const response = await ApiClient.post('/api/briefing', payload);
       audio.play1Up();
 
-      missionIdDisplay.textContent = `PROTOCOLO: ${response.protocol || 'ES-OK'}`;
+      missionIdDisplay.textContent = `PROTOCOLO: ${response.missionId || 'ES-OK'}`;
       resultBanner.classList.remove('hidden');
       form.style.display = 'none';
     } catch (error) {

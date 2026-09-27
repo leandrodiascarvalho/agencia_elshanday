@@ -48,7 +48,7 @@ router.get('/github/org-repos', async (_req, res) => {
     lastFetchTime = now;
 
     res.json({ success: true, cached: false, data });
-  } catch (_error) {
+  } catch {
     res.json({ success: true, fallback: true, data: REPOSITORIES });
   }
 });

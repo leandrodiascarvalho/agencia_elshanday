@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <linearGradient id="cloudGrad400" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#02080a" />
+      <stop offset="100%" stop-color="#041820" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="250" fill="url(#cloudGrad400)" />
+  <!-- Mesh Wireframe -->
+  <path d="M50 50 L150 30 L250 50 L350 30 L300 120 L200 100 L100 120 Z" fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="4 2" />
+  <path d="M100 120 L200 100 L300 120 L350 200 L250 180 L150 200 L50 180 Z" fill="none" stroke="#00ff66" stroke-width="1.5" />
+  <!-- Node Points -->
+  <circle cx="150" cy="30" r="6" fill="#ffee00" />
+  <circle cx="250" cy="50" r="6" fill="#00ff66" />
+  <circle cx="200" cy="100" r="9" fill="#00f0ff" />
+  <circle cx="100" cy="120" r="7" fill="#ff007f" />
+  <circle cx="300" cy="120" r="7" fill="#ff007f" />
+  <circle cx="250" cy="180" r="8" fill="#00ff66" />
+  <circle cx="150" cy="200" r="8" fill="#ffee00" />
+  <text x="200" y="235" text-anchor="middle" fill="#00f0ff" font-family="monospace" font-size="11" font-weight="bold">CLOUD_MESH // NODE_API [400W]</text>
+</svg>

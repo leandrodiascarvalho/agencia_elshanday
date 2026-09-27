@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="neuralGrad1200" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05020a" />
+      <stop offset="35%" stop-color="#140624" />
+      <stop offset="70%" stop-color="#090212" />
+      <stop offset="100%" stop-color="#020104" />
+    </linearGradient>
+    <radialGradient id="coreGlow1200" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.95" />
+      <stop offset="30%" stop-color="#ff007f" stop-opacity="0.6" />
+      <stop offset="60%" stop-color="#ffee00" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+    <pattern id="dotGrid1200" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#00f0ff" fill-opacity="0.3" />
+      <line x1="0" y1="15" x2="30" y2="15" stroke="#ff007f" stroke-width="0.3" stroke-opacity="0.15" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="750" fill="url(#neuralGrad1200)" />
+  <rect width="1200" height="750" fill="url(#dotGrid1200)" />
+  
+  <!-- Cyber Circuit Synapses -->
+  <path d="M50 100 H350 L480 250 H720 L850 100 H1150" stroke="#00f0ff" stroke-width="3" fill="none" stroke-dasharray="16 8" />
+  <path d="M50 650 H350 L480 500 H720 L850 650 H1150" stroke="#ff007f" stroke-width="3" fill="none" stroke-dasharray="16 8" />
+  
+  <!-- Central Quantum Core -->
+  <circle cx="600" cy="375" r="240" fill="url(#coreGlow1200)" />
+  <circle cx="600" cy="375" r="200" fill="none" stroke="#00f0ff" stroke-width="3" stroke-dasharray="24 12" />
+  <circle cx="600" cy="375" r="150" fill="none" stroke="#ffee00" stroke-width="4" stroke-dasharray="16 8" />
+  <circle cx="600" cy="375" r="100" fill="#120422" stroke="#ff007f" stroke-width="5" />
+  <circle cx="600" cy="375" r="50" fill="#00f0ff" />
+  
+  <!-- 8 Quantum Node Satellites -->
+  <g fill="#080210" stroke-width="3">
+    <circle cx="250" cy="200" r="25" stroke="#00f0ff" />
+    <circle cx="950" cy="200" r="25" stroke="#ff007f" />
+    <circle cx="250" cy="550" r="25" stroke="#ffee00" />
+    <circle cx="950" cy="550" r="25" stroke="#00ff66" />
+    <circle cx="150" cy="375" r="22" stroke="#00f0ff" />
+    <circle cx="1050" cy="375" r="22" stroke="#ff007f" />
+    <circle cx="600" cy="110" r="22" stroke="#ffee00" />
+    <circle cx="600" cy="640" r="22" stroke="#00ff66" />
+  </g>
+  
+  <!-- Labels inside satellites -->
+  <text x="250" y="206" text-anchor="middle" fill="#00f0ff" font-family="monospace" font-size="12" font-weight="bold">Q01</text>
+  <text x="950" y="206" text-anchor="middle" fill="#ff007f" font-family="monospace" font-size="12" font-weight="bold">Q02</text>
+  <text x="250" y="556" text-anchor="middle" fill="#ffee00" font-family="monospace" font-size="12" font-weight="bold">Q03</text>
+  <text x="950" y="556" text-anchor="middle" fill="#00ff66" font-family="monospace" font-size="12" font-weight="bold">Q04</text>
+  <text x="150" y="380" text-anchor="middle" fill="#00f0ff" font-family="monospace" font-size="11">IN_01</text>
+  <text x="1050" y="380" text-anchor="middle" fill="#ff007f" font-family="monospace" font-size="11">OUT_01</text>
+  <text x="600" y="115" text-anchor="middle" fill="#ffee00" font-family="monospace" font-size="11">GATE_A</text>
+  <text x="600" y="645" text-anchor="middle" fill="#00ff66" font-family="monospace" font-size="11">GATE_B</text>
+  
+  <!-- Connector Beams -->
+  <line x1="275" y1="200" x2="455" y2="310" stroke="#00f0ff" stroke-width="2.5" />
+  <line x1="925" y1="200" x2="745" y2="310" stroke="#ff007f" stroke-width="2.5" />
+  <line x1="275" y1="550" x2="455" y2="440" stroke="#ffee00" stroke-width="2.5" />
+  <line x1="925" y1="550" x2="745" y2="440" stroke="#00ff66" stroke-width="2.5" />
+  <line x1="172" y1="375" x2="400" y2="375" stroke="#00f0ff" stroke-width="2" />
+  <line x1="1028" y1="375" x2="800" y2="375" stroke="#ff007f" stroke-width="2" />
+  
+  <!-- HUD Header & Footer Panels -->
+  <rect x="250" y="40" width="700" height="35" fill="#0c0418" stroke="#00f0ff" stroke-width="2" />
+  <text x="600" y="63" text-anchor="middle" fill="#00f0ff" font-family="monospace" font-size="15" font-weight="bold">NEURAL QUANTUM ARCHITECTURE // ULTRA-WIDE HIGH DENSITY [1200W]</text>
+  
+  <rect x="200" y="680" width="800" height="35" fill="#0c0418" stroke="#ffee00" stroke-width="2" />
+  <text x="600" y="703" text-anchor="middle" fill="#ffee00" font-family="monospace" font-size="14" font-weight="bold">GEMINI 2.5/3.0 DUAL-CORE INFERENCE ENGINE // STREAMING PROTOCOL ACTIVATED</text>
+</svg>

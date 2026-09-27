@@ -43,7 +43,7 @@ router.get('/telemetry/github', async (_req, res) => {
     lastTelemetryTime = now;
 
     res.json({ success: true, cached: false, data: telemetryData });
-  } catch (_error) {
+  } catch {
     res.json({
       success: true,
       fallback: true,
